@@ -16,8 +16,8 @@ export interface LevelProps {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const Level: FC<LevelProps> = memo(({ children, value, onChange }) => (
-  <Select onChange={onChange} value={value}>
+export const Level: FC<LevelProps> = memo(({ children, value }) => (
+  <Select value={value}>
     {children.map((item: string) => (
       <Option key={item} value={item}>
         {item}

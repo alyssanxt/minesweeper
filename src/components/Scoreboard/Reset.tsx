@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import styled from '@emotion/styled';
 
-import { useMouseDown } from '@/components/hooks/useMouseDown';
+import { useMouseDown } from '../hooks/useMouseDown';
 
 export interface ResetProps {
   /**
