@@ -1,5 +1,6 @@
 // import logo from '../src/';
 import './App.css';
+import React, { FC, Suspense } from 'react';
 
 function App() {
   return (
