@@ -31,7 +31,7 @@ module.exports={
             test: /\.(js|ts)x?$/,
             loader: require.resolve('babel-loader'),
             exclude: /node_modules/,
-            options: { presets: ['@babel/env','@babel/preset-react'] },
+            options: { presets: ['@babel/env','@babel/preset-react', "@babel/preset-typescript"] },
           },
         ]},
     plugins: [
