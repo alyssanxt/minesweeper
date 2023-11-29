@@ -44,7 +44,6 @@ export const Scoreboard: FC<ScoreboardProps> = ({
     <Counter>{time}</Counter>
     <div>
       <Level onChange={onChange} value={defaultLevel}>
-      {/* <Level> */}
         {levels}
       </Level>
       <Reset onReset={onReset} />

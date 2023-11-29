@@ -1,4 +1,4 @@
-import { Cell, Coords, Field } from './Field';
+import { Cell, CellState, Coords, Field } from './Field';
 
 export const getNeigboursItems = ([y, x]: Coords): Record<
   string,
@@ -31,3 +31,19 @@ export const incrementNeighbours = (coords: Coords, field: Field): Field => {
 
   return field;
 };
+
+
+export const openCell = (
+  coord: Coords,
+  playerField: Field, 
+  gameField: Field) : Field  => {
+    const {empty, hidden, bomb} = CellState; 
+
+    const [y, x] = coord
+    const gameCell = gameField[y][x];
+    if (gameCell === bomb){
+      throw new Error("Game Over")
+    }
+    playerField[y][x] = gameCell
+    return playerField
+  }; 
