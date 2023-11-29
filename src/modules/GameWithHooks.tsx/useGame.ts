@@ -7,8 +7,8 @@ import {
   fieldGenerator,
   Coords,
 } from '@/helper/Field'
-import { openCell } from '@/helper/CellsManipulator';
-// import { setFlag } from '@/helper/setFlag';
+import { openCell } from '@/helper/openCell';
+import { setFlag } from '@/helper/setFlag';
 
 import { LevelNames, GameSettings } from '@/modules/GameSettings';
 
@@ -24,10 +24,10 @@ interface ReturnType {
   isWin: boolean;
   settings: [number, number];
   playerField: Field;
-//   gameField: Field;
+  gameField: Field;
 //   flagCounter: number;
   onClick: (coords: Coords) => void;
-//   onContextMenu: (coords: Coords) => void;
+  onContextMenu: (coords: Coords) => void;
   onChangeLevel: (level: LevelNames) => void;
   onReset: () => void;
 }
@@ -57,6 +57,11 @@ export const useGame = (): ReturnType =>{
         }
         
     };
+    const onContextMenu = (coords: Coords) => {
+        const newPlayerfield =  setFlag(coords,playerField,gameField);
+        setPlayerField([...newPlayerfield]);
+    };
+
     const onChangeLevel = (level: LevelNames) => {
         setLevel(level as LevelNames)
         const newSettings = GameSettings[level as LevelNames]
@@ -82,7 +87,9 @@ export const useGame = (): ReturnType =>{
         isWin,
         settings: [size, bombs],
         playerField,
+        gameField,
         onClick,
+        onContextMenu,
         onChangeLevel,
         onReset,
     };

@@ -44,17 +44,20 @@ export const areEqual = (
 };
 
 export const Cell: FC<CellProps> = memo(({ children, coords, ...rest }) => {
+    // mouseDown (clicking)
+    // mouseUp (releasing the clicking button)
     const [mouseDown, onMouseDown, onMouseUp] = useMouseDown();
 
     const onClick = () => rest.onClick(coords);
 
     const onContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
-        /**
-         * Prevent context menu by default
-         */
         event.preventDefault();
 
+        //  allow flagging for: hidden, weak flag or flag
         if (isActiveCell(children)) {
+            console.log("acTivecell")
+
+            // function from useGame.ts that allows us to flag 
             rest.onContextMenu(coords);
         }
     };
@@ -73,7 +76,6 @@ export const Cell: FC<CellProps> = memo(({ children, coords, ...rest }) => {
     return <ComponentsMap {...props}>{children}</ComponentsMap>;
 }, areEqual);
 
-// Stryker disable next-line StringLiteral
 Cell.displayName = 'Cell';
 
 interface ComponentsMapProps {
@@ -90,6 +92,7 @@ interface ComponentsMapProps {
 
 const ComponentsMap: FC<ComponentsMapProps> = ({ children, ...rest }) => {
     const nonActiveCellProps = {
+        // TODO: do we need this?
         onContextMenu: rest.onContextMenu,
         'data-testid': rest['data-testid'],
         role: rest.role,

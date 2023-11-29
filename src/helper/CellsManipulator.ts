@@ -33,17 +33,20 @@ export const incrementNeighbours = (coords: Coords, field: Field): Field => {
 };
 
 
-export const openCell = (
-  coord: Coords,
-  playerField: Field, 
-  gameField: Field) : Field  => {
-    const {empty, hidden, bomb} = CellState; 
+// export const openCell = (
+//   coord: Coords,
+//   playerField: Field, 
+//   gameField: Field) : Field  => {
+//     const {empty, hidden, bomb} = CellState; 
 
-    const [y, x] = coord
-    const gameCell = gameField[y][x];
-    if (gameCell === bomb){
-      throw new Error("Game Over")
-    }
-    playerField[y][x] = gameCell
-    return playerField
-  }; 
+//     const [y, x] = coord
+//     const gameCell = gameField[y][x];
+//     if (gameCell === bomb){
+//       throw new Error("Game Over")
+//     }
+//     if (gameCell === empty){
+//       playerField[y][x] = gameCell;
+//     }
+    
+//     return playerField
+//   }; 

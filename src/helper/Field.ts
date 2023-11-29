@@ -5,7 +5,7 @@ export type Field = Cell[][];
 export type Coords = [number, number];
 
 export const CellState: Record<string, Cell> = {
-  empty: 0,
+  empty: 0, //includes cells with numbers
   bomb: 9,
   hidden: 10,
   flag: 11,
